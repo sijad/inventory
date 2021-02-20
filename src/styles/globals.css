@@ -3,12 +3,27 @@
 @tailwind utilities;
 
 html, body {
-  @apply dark:bg-gray-900 bg-gray-50;
+  @apply bg-background-light dark:bg-background-dark;
 }
 
 @layer components {
+  .surface {
+    @apply bg-surface-light dark:bg-surface-dark;
+  }
+
+  .on-surface {
+    @apply bg-gray-100 text-secondary-light dark:bg-gray-800 dark:text-secondary-dark;
+  }
+
   .card {
-    @apply bg-white shadow-lg dark:bg-gray-900;
+    @apply shadow-lg bg-surface-light dark:bg-surface-dark;
+  }
+
+  .paragraph {
+    @apply text-paragraph-light dark:text-paragraph-dark;
+  }
+
+  .header {
+    @apply text-header-light dark:text-header-dark;
   }
 }
-

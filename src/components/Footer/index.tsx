@@ -3,7 +3,7 @@ import Container from "components/Container";
 export default function Footer(): JSX.Element {
   return (
     <Container>
-      <footer className="mt-5 text-center text-gray-400">
+      <footer className="mt-5 text-center text-gray-400 dark:text-gray-600">
         <p>
           <svg
             className="inline w-5"
