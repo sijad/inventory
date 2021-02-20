@@ -13,9 +13,9 @@ export default function Home(): JSX.Element {
         <title>Inventory</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="min-h-screen">
+      <div className="min-h-screen pb-24">
         <Container>
-          <main className="max-w-3xl py-5 m-auto">
+          <main className="max-w-3xl pt-5 m-auto">
             <div className="flex md:space-x-3">
               <div className="fixed bottom-0 left-0 flex items-center flex-1 w-full px-5 py-3 md:py-5 md:relative md:rounded-2xl card">
                 <button className="px-1 py-3 mr-3 text-white rounded-lg bg-primary">
@@ -85,7 +85,52 @@ export default function Home(): JSX.Element {
             </div>
             <div className="flex mt-5">
               <div className="w-full p-5 paragraph rounded-2xl card">
-                {"table"}
+                <div className="flex items-center mb-2 text-xs text-gray-700 dark:text-gray-600 space-x-3">
+                  <div className="w-8" />
+                  <div className="flex-1">
+                    <div>Asset</div>
+                  </div>
+                  <div className="flex items-center flex-1">
+                    <div className="flex-1">
+                      <div>Balance</div>
+                    </div>
+                    <div className="flex-1 hidden md:block">
+                      <div>Profit</div>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-full space-y-4">
+                  {[1, 2, 3, 4, 5].map((key) => {
+                    return (
+                      <div
+                        key={key.toString()}
+                        className="flex items-center space-x-3"
+                      >
+                        <img
+                          className="w-8"
+                          src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579"
+                          alt="bitcoin logo"
+                        />
+                        <div className="flex-1 leading-4">
+                          <div className="font-bold header">Bitcoin</div>
+                          <div className="text-xs">BTC</div>
+                        </div>
+                        <div className="flex items-center flex-1">
+                          <div className="flex-1 leading-4">
+                            <div className="text-sm font-bold">0.3445233</div>
+                            <div className="text-xs text-gray-800 dark:text-gray-500">
+                              $ 332,233.42
+                            </div>
+                          </div>
+                          <div className="flex-1 hidden leading-4 md:block">
+                            <div className="text-sm font-bold">$ 3,323.00</div>
+                            <div className="text-xs text-green">+13%</div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </main>
