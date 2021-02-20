@@ -6,6 +6,7 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:prettier/recommended",
     "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
   ],
   parserOptions: {
     ecmaVersion: 2018,
