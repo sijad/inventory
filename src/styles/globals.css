@@ -8,7 +8,7 @@ html, body {
 
 @layer components {
   .card {
-    @apply bg-white shadow-md dark:bg-gray-900;
+    @apply bg-white shadow-lg dark:bg-gray-900;
   }
 }
 
