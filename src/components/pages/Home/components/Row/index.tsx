@@ -1,12 +1,11 @@
 import { Asset } from "inventory";
 import { useAssetDetails } from "inventory";
-import type { ReactNode } from "react";
 
 interface RowProps {
   asset: Asset;
 }
 
-export default function Row({ asset }: RowProps): ReactNode {
+export default function Row({ asset }: RowProps): JSX.Element | null {
   const [details] = useAssetDetails(asset);
 
   if (!details) {

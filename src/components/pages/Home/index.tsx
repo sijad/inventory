@@ -36,25 +36,31 @@ export default function Home(): JSX.Element {
         </div>
         <div className="flex mt-5">
           <div className="w-full p-5 paragraph rounded-2xl card">
-            <div className="flex items-center mb-2 text-xs text-gray-700 dark:text-gray-600 space-x-3">
-              <div className="w-8" />
-              <div className="flex-1">
-                <div>Asset</div>
-              </div>
-              <div className="flex items-center flex-1">
-                <div className="flex-1">
-                  <div>Balance</div>
+            {assets.length > 0 ? (
+              <>
+                <div className="flex items-center mb-2 text-xs text-gray-700 dark:text-gray-600 space-x-3">
+                  <div className="w-8" />
+                  <div className="flex-1">
+                    <div>Asset</div>
+                  </div>
+                  <div className="flex items-center flex-1">
+                    <div className="flex-1">
+                      <div>Balance</div>
+                    </div>
+                    <div className="flex-1 hidden md:block">
+                      <div>Profit</div>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex-1 hidden md:block">
-                  <div>Profit</div>
+                <div className="w-full space-y-4">
+                  {assets.map((asset) => {
+                    return <Row key={asset.id} asset={asset} />;
+                  })}
                 </div>
-              </div>
-            </div>
-            <div className="w-full space-y-4">
-              {assets.map((asset) => {
-                return <Row key={asset.id} asset={asset} />;
-              })}
-            </div>
+              </>
+            ) : (
+              <p className="text-center">Nothing has been added yet.</p>
+            )}
           </div>
         </div>
       </main>
