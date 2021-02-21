@@ -16,13 +16,15 @@ export interface DecreaseTransaction {
 export type Transaction = IncreaseTransaction | DecreaseTransaction;
 
 export interface Asset {
+  type: "crypto";
+  id: string;
   symbol: string;
   name: string;
   transactions: Transaction[];
 }
 
 export interface Inventory {
-  assets: Record<AssetKey, Asset>;
-  updateAsset(key: AssetKey, asset: Asset): void;
+  assets: Asset[];
+  updateAsset(asset: Asset): void;
   addAsset(asset: Asset): AssetKey;
 }

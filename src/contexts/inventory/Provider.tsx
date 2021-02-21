@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 import { useState, useCallback, useMemo, useEffect, ReactNode } from "react";
 import { InventoryContext } from "./context";
-import type { Inventory, Asset, AssetKey } from "./types";
+import type { Asset, AssetKey } from "./types";
 
 interface InventoryProviderProps {
   children: ReactNode;
@@ -9,22 +9,22 @@ interface InventoryProviderProps {
 
 const localStorageKey = "inventory-assets";
 
-export default function InventoryProvider({
+export function InventoryProvider({
   children,
 }: InventoryProviderProps): JSX.Element {
-  const [assets, setAssets] = useState<Inventory["assets"]>(() => {
+  const [assets, setAssets] = useState<Asset[]>(() => {
     const _assets = process.browser && localStorage.getItem(localStorageKey);
-    return _assets ? JSON.parse(_assets) : {};
+    return _assets ? JSON.parse(_assets) : [];
   });
 
-  const addAsset = useCallback((asset: Asset): AssetKey => {
+  const addAsset = useCallback((asset: Exclude<Asset, "id">): AssetKey => {
     const id = uuid();
-    setAssets((old) => ({ ...old, [id]: asset }));
+    setAssets((old) => [...old, { ...asset, id }]);
     return id;
   }, []);
 
-  const updateAsset = useCallback((id: AssetKey, asset: Asset): void => {
-    setAssets((old) => ({ ...old, [id]: asset }));
+  const updateAsset = useCallback((asset: Asset): void => {
+    setAssets((old) => [asset, ...old.filter(({ id }) => id != asset.id)]);
   }, []);
 
   useEffect(() => {
