@@ -1,4 +1,4 @@
-import ky from "ky";
+import ky from "ky/index";
 import { useQuery, QueryObserverResult } from "react-query";
 
 type CoinKey = string;
@@ -22,7 +22,7 @@ export function useCoins(): QueryObserverResult<Record<CoinKey, Coin>> {
     async () => {
       const res = await client.get("search").json<{ coins: Coin[] }>();
       return res.coins.reduce((o, c) => {
-        o[c.symbol] = c;
+        o[c.id] = c;
         return o;
       }, {} as Record<CoinKey, Coin>);
     },

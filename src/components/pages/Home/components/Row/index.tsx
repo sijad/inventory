@@ -1,14 +1,27 @@
-export default function Row(): JSX.Element {
+import { Asset } from "inventory";
+import { useAssetDetails } from "inventory";
+import type { ReactNode } from "react";
+
+interface RowProps {
+  asset: Asset;
+}
+
+export default function Row({ asset }: RowProps): ReactNode {
+  const [details] = useAssetDetails(asset);
+
+  if (!details) {
+    return null;
+  }
+
+  const { name } = asset;
+  const { iconUrl, symbol, name: assetName } = details;
+
   return (
     <div className="flex items-center space-x-3">
-      <img
-        className="w-8"
-        src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579"
-        alt="bitcoin logo"
-      />
+      <img className="w-8" src={iconUrl} alt={`${assetName} logo`} />
       <div className="flex-1 leading-4">
-        <div className="font-bold header">Bitcoin</div>
-        <div className="text-xs">BTC</div>
+        <div className="font-bold header">{name}</div>
+        <div className="text-xs">{symbol}</div>
       </div>
       <div className="flex items-center flex-1">
         <div className="flex-1 leading-4">

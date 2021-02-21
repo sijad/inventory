@@ -2,9 +2,12 @@ import Container from "components/Container";
 import PlusIcon from "components/icons/Plus";
 import SearchIcon from "components/icons/Search";
 import SettingIcon from "components/icons/Setting";
+import { useInventory } from "inventory";
 import Row from "./components/Row";
 
 export default function Home(): JSX.Element {
+  const { assets } = useInventory();
+
   return (
     <Container>
       <main className="max-w-3xl pt-5 m-auto">
@@ -48,8 +51,8 @@ export default function Home(): JSX.Element {
               </div>
             </div>
             <div className="w-full space-y-4">
-              {[1, 2, 3, 4, 5].map((key) => {
-                return <Row key={key.toString()} />;
+              {assets.map((asset) => {
+                return <Row key={asset.id} asset={asset} />;
               })}
             </div>
           </div>

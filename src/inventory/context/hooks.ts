@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { InventoryContext } from "./context";
-import type { Inventory } from "./types";
+import type { Inventory } from "../types";
 
 export function useInventory(): Inventory {
   const inventory = useContext(InventoryContext);

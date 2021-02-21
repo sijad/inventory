@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 import { useState, useCallback, useMemo, useEffect, ReactNode } from "react";
 import { InventoryContext } from "./context";
-import type { Asset, AssetKey } from "./types";
+import type { Asset, AssetKey } from "../types";
 
 interface InventoryProviderProps {
   children: ReactNode;

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Head from "next/head";
 import HomePage from "components/pages/Home";
 import Footer from "components/Footer";
-import InventoryProvider from "contexts/inventory/Provider";
+import { InventoryProvider } from "inventory";
 
 export default function Home(): JSX.Element {
   useEffect(() => {

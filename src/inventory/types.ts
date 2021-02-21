@@ -17,8 +17,8 @@ export type Transaction = IncreaseTransaction | DecreaseTransaction;
 
 export interface Asset {
   type: "crypto";
+  typeId: string;
   id: string;
-  symbol: string;
   name: string;
   transactions: Transaction[];
 }
