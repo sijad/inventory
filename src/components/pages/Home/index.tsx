@@ -1,21 +1,31 @@
+import { useState } from "react";
 import Container from "components/Container";
 import PlusIcon from "components/icons/Plus";
 import SearchIcon from "components/icons/Search";
 import SettingIcon from "components/icons/Setting";
 import { useInventory } from "inventory";
 import Row from "./components/Row";
+import AddModal from "./components/AddModal";
 
 export default function Home(): JSX.Element {
   const { assets } = useInventory();
+  const [isAddModalOpen, setAddModalOpen] = useState(false);
 
   return (
     <Container>
       <main className="max-w-3xl pt-5 m-auto">
         <div className="flex md:space-x-3">
           <div className="fixed bottom-0 left-0 flex items-center flex-1 w-full px-5 py-3 md:py-5 md:relative md:rounded-2xl card">
-            <button className="px-1 py-3 mr-3 text-white rounded-lg bg-primary">
+            <button
+              className="px-1 py-3 mr-3 text-white rounded-lg bg-primary"
+              onClick={() => setAddModalOpen(true)}
+            >
               <PlusIcon className="w-10 h-4" />
             </button>
+            <AddModal
+              isOpen={isAddModalOpen}
+              onDismiss={() => setAddModalOpen(false)}
+            />
             <div className="relative w-full">
               <SearchIcon className="absolute top-0 left-0 w-5 mt-2 ml-2 paragraph" />
               <input className="w-full py-2 pl-8 pr-2 rounded-lg on-surface paragraph" />

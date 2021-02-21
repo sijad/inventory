@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "~@reach/dialog/styles.css";
+
 html, body {
   @apply bg-background-light dark:bg-background-dark;
 }
