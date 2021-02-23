@@ -11,7 +11,12 @@ export default function AddModal({
 }: AddModalProps): JSX.Element {
   return (
     <div>
-      <Modal className="w-full max-w-md" isOpen={isOpen} onDismiss={onDismiss}>
+      <Modal
+        label="Add Asset Modal"
+        className="w-full max-w-md"
+        isOpen={isOpen}
+        onDismiss={onDismiss}
+      >
         <p>Hello there. I am a dialog</p>
       </Modal>
     </div>

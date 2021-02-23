@@ -7,6 +7,7 @@ interface ModalProps {
   isOpen: boolean;
   onDismiss: () => void;
   children: ReactNode;
+  label: string;
   className?: string;
 }
 
@@ -14,6 +15,7 @@ export default function Modal({
   isOpen,
   onDismiss,
   children,
+  label,
   className = "",
 }: ModalProps): JSX.Element {
   return (
@@ -21,6 +23,7 @@ export default function Modal({
       <Dialog
         className={`relative rounded-2xl card paragraph ${className}`}
         isOpen={isOpen}
+        aria-label={label}
         onDismiss={onDismiss}
       >
         <button onClick={onDismiss} className="absolute p-2 top-2 right-2">
