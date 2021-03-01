@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import "~@reach/dialog/styles.css";
+@import "~@reach/combobox/styles.css";
 
 html, body {
   @apply bg-background-light dark:bg-background-dark;
